@@ -1,0 +1,327 @@
+/* === Base and Theme === */
+:root {
+    --bg: #1e1e1e;
+    --bg-panel: #252526;
+    --bg-dark: #181818;
+    --text: #d4d4d4;
+    --accent: #007acc;
+    --accent-light: #4fc1ff;
+    --warn: #c586c0;
+    --err: #f44747;
+    --brand: #007acc;
+    --border: #3c3c3c;
+}
+
+/* === Light Mode === */
+body.light {
+    --bg: #f3f3f3;
+    --bg-panel: #ffffff;
+    --bg-dark: #e6e6e6;
+    --text: #1e1e1e;
+    --accent: #007acc;
+    --accent-light: #005a9e;
+    --warn: #c586c0;
+    --err: #f44747;
+    --border: #cccccc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Consolas", "Courier New", monospace;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* === Header === */
+header {
+    background: var(--bg-panel);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 28px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.container.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 28px;
+    height: 28px;
+    background: var(--accent);
+    border-radius: 4px;
+    background: url("https://discourse-user-assets.s3.amazonaws.com/original/2X/d/df30640741461569071875cf4ff6cad9924f8b32.png") center / cover no-repeat;
+}
+
+.title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent-light);
+}
+
+/* === Buttons (VS Code Style) === */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    cursor: pointer;
+    color: #ffffff;
+    background: linear-gradient(145deg, #2a2a2a, #1c1c1c);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4), inset 0 0 0 1px #3c3c3c;
+    transition: all 0.2s ease;
+    margin-left: 12px;
+    font-size: 15px;
+}
+
+.btn.ok {
+    background: linear-gradient(145deg, #007acc, #005a9e);
+    box-shadow: 0 3px 6px rgba(0, 122, 204, 0.4), 0 0 10px rgba(0, 122, 204, 0.3);
+}
+
+.btn.ok:hover {
+    background: linear-gradient(145deg, #0094ff, #006bb3);
+    box-shadow: 0 0 12px rgba(0, 180, 255, 0.6);
+    transform: translateY(-1px);
+}
+
+.btn.warn {
+    background: linear-gradient(145deg, #c586c0, #a65ca0);
+    box-shadow: 0 3px 6px rgba(197, 134, 192, 0.4), 0 0 10px rgba(197, 134, 192, 0.3);
+}
+
+.btn.warn:hover {
+    background: linear-gradient(145deg, #d977d3, #b357a8);
+    box-shadow: 0 0 12px rgba(217, 119, 211, 0.6);
+    transform: translateY(-1px);
+}
+
+.btn.secondary {
+    background: linear-gradient(145deg, #2f2f2f, #252525);
+    color: #cccccc;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn.secondary:hover {
+    background: linear-gradient(145deg, #3b3b3b, #2c2c2c);
+    color: var(--accent-light);
+    box-shadow: 0 0 8px rgba(79, 193, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
+    filter: brightness(0.9);
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(79, 193, 255, 0.5);
+}
+
+/* === Layout === */
+main {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1.3fr 2.4fr 1.3fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* === Panels & Cards === */
+.card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease;
+}
+
+.panel h2 {
+    font-size: 1.2rem;
+    color: var(--accent-light);
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+}
+
+/* === Tabs (Refined VS Code Style) === */
+.tabs {
+    display: flex;
+    gap: 0;
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--border);
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    background: linear-gradient(180deg, #2b2b2b, #222);
+    color: #bbb;
+    padding: 10px 0;
+    font-size: 15px;
+    border-right: 1px solid #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    font-weight: 500;
+}
+
+.tab:last-child {
+    border-right: none;
+}
+
+.tab:hover {
+    background: linear-gradient(180deg, #333, #262626);
+    color: var(--accent-light);
+}
+
+.tab.active {
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 122, 204, 0.6);
+    z-index: 1;
+}
+
+.tab.active::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--accent-light);
+}
+
+/* Editor container */
+.editor-wrap {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* === Editor === */
+.editor {
+    height: 480px;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 16px;
+}
+
+/* Ace editor fix */
+.ace_editor {
+    font-size: 16px !important;
+}
+
+/* === Preview === */
+.preview {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #ffffff;
+}
+
+/* === Output / Console === */
+.out {
+    background: #1b1b1b;
+    height: 320px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    padding: 12px;
+    overflow-y: auto;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.out div {
+    margin: 5px 0;
+}
+
+.muted {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.kdb {
+    background: #333;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 3px 8px;
+    color: var(--accent-light);
+}
+
+/* === Footer === */
+.footer {
+    text-align: center;
+    padding: 12px;
+    border-top: 1px solid var(--border);
+    background: var(--bg-panel);
+    font-size: 0.95rem;
+    color: #aaa;
+}
+
+/* === Scrollbar === */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* === Textarea Styling === */
+textarea.text {
+    width: 100%;
+    background: var(--bg-dark);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    resize: vertical;
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    transition: all 0.2s ease;
+}
+
+textarea.text:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 8px rgba(0, 122, 204, 0.4);
+    outline: none;
+}
